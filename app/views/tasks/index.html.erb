@@ -3,12 +3,14 @@
   <thead>
     <tr>
       <th>タスク名</th>
+      <th></th> <!-- この行を追加 -->
     </tr>
   </thead>
   <tbody>
     <% @tasks.each do |task| %>
       <tr>
         <td><%= task.title %></td>
+        <td><%= link_to "編集", edit_task_path(task) %></td> <!-- 追加 -->
       </tr>
     <% end %>
   </tbody>
