@@ -1,0 +1,20 @@
+<h1>タスク詳細</h1>
+<table class="table">
+	<thead>
+		<tr>
+			<th>タスク名</th>
+			<th>作成日</th>
+			<th>更新日</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><%= @task.title %></td>
+			<td><%= @task.created_at %></td>
+			<td><%= @task.updated_at %></td>
+		</tr>
+	</tbody>
+</table>
+<div class="d-flex flex-row-reverse mt-3 mb-3">
+  <%= link_to "戻る", tasks_path, class: "btn btn-secondary p-6" %>
+</div>
