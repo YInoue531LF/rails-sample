@@ -2,7 +2,7 @@
 	<h1 class="flex-grow-1">ユーザー情報</h1>
 	<div><%= link_to 'ログアウト', logout_path, data:{ turbo_method: :delete } %></div>
 </div>
-<p>メールアドレス：<%= @user.email %></p>
+<p>メールアドレス：<%= current_user.email %></p>
 
 <h3 class="mt-5">アカウントの削除</h3>
 <hr>

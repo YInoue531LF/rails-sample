@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :require_login, only: [:show, :destroy]
+
   def new
     @user = User.new
   end
@@ -6,20 +8,18 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to profile_path(@user)
+      redirect_to profile_path, status: :see_other
     else
       render 'new', status: :unprocessable_entity
     end
   end
 
   def show
-    @user = User.find(params[:id])
   end
 
   def destroy
-    user = User.find(params[:id])
-    user.destroy
-    redirect_to signup_path
+    current_user.destroy
+    redirect_to signup_path, status: :see_other
   end
 
   private
