@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   delete '/users/:id', to: 'users#destroy', as: 'unsubscribe'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
 end
