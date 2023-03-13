@@ -8,7 +8,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to profile_path, status: :see_other
+      log_in(@user)
+      redirect_to tasks_path, status: :see_other
     else
       render 'new', status: :unprocessable_entity
     end

@@ -1,4 +1,4 @@
-<h1>新規タスク</h1>
+<%= render partial: 'title', locals: { title: "新規タスク" } %>
 <%= form_with model: @task do |f| %>
   <div class="form-group mt-3 mb-3" >
     <%= f.label :title %>
