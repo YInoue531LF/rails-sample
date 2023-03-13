@@ -3,6 +3,7 @@
 	<thead>
 		<tr>
 			<th>タスク名</th>
+			<th>完了 / 未完了</th>
 			<th>作成日</th>
 			<th>更新日</th>
 		</tr>
@@ -10,6 +11,7 @@
 	<tbody>
 		<tr>
 			<td><%= @task.title %></td>
+			<td><%= @task.done ? '完了' : '未完了' %></td>
 			<td><%= @task.created_at %></td>
 			<td><%= @task.updated_at %></td>
 		</tr>

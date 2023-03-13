@@ -1,6 +1,9 @@
 class TasksController < ApplicationController
+  before_action :require_login
+  before_action :user_check, {only: [:edit, :update, :destroy, :show]}
+
   def index
-    @tasks = Task.all
+    @tasks = current_user.tasks
   end
 
   def new
@@ -8,32 +11,35 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.create(task_params)
+    @task = current_user.tasks.create(task_params)
     redirect_to tasks_path
   end
 
   def edit
-		@task = Task.find(params[:id])
-	end
+  end
 
 	def update
-		@task = Task.find(params[:id])
-		@task.update(task_params)
+    @task.update(task_params)
 		redirect_to tasks_path
 	end
 
   def destroy
-    @task = Task.find(params[:id])
-		@task.destroy
+    @task.destroy
     redirect_to tasks_path, status: :see_other
 	end
 
   def show
-    @task = Task.find(params[:id])
   end
   
   private
     def task_params
-      params.require(:task).permit(:title)
+      params.require(:task).permit(:title, :done)
+    end
+
+    def user_check
+      @task = current_user.tasks.find_by(id: params[:id])
+      if @task.nil?
+        redirect_to tasks_path and return
+      end
     end
 end

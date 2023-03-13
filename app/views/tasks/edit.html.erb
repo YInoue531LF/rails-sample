@@ -1,8 +1,10 @@
 <h1>タスク編集</h1>
 <%= form_with model: @task do |f| %>
 	<div class="form-group mt-3 mb-3">
-		<%= f.label :title %>
-		<%= f.text_field :title, class: "form-control", placeholder: "Enter task title" %>
+		<div class="mt-1"><%= f.label :title %></div>
+		<div class="mt-1"><%= f.text_field :title, class: "form-control", placeholder: "Enter task title" %></div>
+		<div class="mt-1"><%= f.label :done %></div>
+		<div class="mt-1"><%= f.select :done, [['未完了', false],['完了', true]], { include_blank: false, selected: @task.done} %></div>
 	</div>
 	<%= f.submit :"更新", class: "btn btn-primary" %>
 <% end %>

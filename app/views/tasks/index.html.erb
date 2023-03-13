@@ -3,16 +3,18 @@
   <thead>
     <tr>
       <th>タスク名</th>
+      <th>完了 / 未完了</th>
       <th></th>
-      <th></th> <!-- この行を追加 -->
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <% @tasks.each do |task| %>
       <tr>
         <td><%= link_to task.title, task_path(task) %></td>
+        <td><%= task.done ? '完了' : '未完了'%></td>
         <td><%= link_to "編集", edit_task_path(task) %></td>
-        <td><%= link_to "削除", task_path(task), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %></td> <!-- この行を追加 -->
+        <td><%= link_to "削除", task_path(task), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %></td>
       </tr>
     <% end %>
   </tbody>
